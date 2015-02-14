@@ -43,3 +43,6 @@ group :development, :test do
   gem 'spring'
 end
 
+# Use Devise for user management
+gem 'devise', '~> 3.4.1'
+

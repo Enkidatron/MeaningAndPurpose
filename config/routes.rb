@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   resources :answers
 
   resources :responses
@@ -6,6 +7,8 @@ Rails.application.routes.draw do
   resources :questions
 
   resources :quizzes
+
+  root 'quizzes#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
