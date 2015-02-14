@@ -2,9 +2,9 @@ class CreateQuestions < ActiveRecord::Migration
   def change
     create_table :questions do |t|
       t.text :question
-      t.int :type
-      t.int :family
-      t.int :version
+      t.integer :type
+      t.integer :family
+      t.integer :version
 
       t.timestamps null: false
     end

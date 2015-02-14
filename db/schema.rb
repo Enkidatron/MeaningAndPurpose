@@ -11,6 +11,52 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20150214162222) do
+
+  create_table "answers", force: :cascade do |t|
+    t.text     "textAnswer"
+    t.integer  "intAnswer"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "response_id"
+    t.integer  "question_id"
+  end
+
+  add_index "answers", ["question_id"], name: "index_answers_on_question_id"
+  add_index "answers", ["response_id"], name: "index_answers_on_response_id"
+
+  create_table "questions", force: :cascade do |t|
+    t.text     "question"
+    t.integer  "type"
+    t.integer  "family"
+    t.integer  "version"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "questionships", force: :cascade do |t|
+    t.integer  "quiz_id"
+    t.integer  "question_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "questionships", ["question_id"], name: "index_questionships_on_question_id"
+  add_index "questionships", ["quiz_id"], name: "index_questionships_on_quiz_id"
+
+  create_table "quizzes", force: :cascade do |t|
+    t.integer  "version"
+    t.integer  "family"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "responses", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "quiz_id"
+  end
+
+  add_index "responses", ["quiz_id"], name: "index_responses_on_quiz_id"
 
 end
