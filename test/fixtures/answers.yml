@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  textAnswer: MyText
+  intAnswer: 
+
+two:
+  textAnswer: MyText
+  intAnswer: 
