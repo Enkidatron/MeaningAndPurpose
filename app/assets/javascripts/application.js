@@ -15,6 +15,8 @@
 //= require turbolinks
 //= require underscore
 //= require backbone
+//= require react
+//= require backbone-react-component-min
 //= require meaning_and_purpose
 //= require_tree ../templates
 //= require_tree ./models
