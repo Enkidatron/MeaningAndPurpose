@@ -49,3 +49,7 @@ gem 'devise', '~> 3.4.1'
 # Backbone.js for client side modeling
 gem 'backbone-on-rails', '~> 1.1.2.0'
 
+# React.js for client side rendering
+# Will be used with backbone-react-component, which is in vendor folder
+gem 'react-rails', '~> 0.12.2.0'
+
