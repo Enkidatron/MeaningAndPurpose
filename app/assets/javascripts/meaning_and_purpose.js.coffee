@@ -3,7 +3,12 @@ window.MeaningAndPurpose =
   Collections: {}
   Views: {}
   Routers: {}
-  initialize: -> alert 'Hello from Backbone!'
+  initialize: -> 
+  	console.log 'MeaningAndPurpose.initialize'
+  	this.router = new MeaningAndPurpose.Routers.Questions()
+  	unless Backbone.history.started
+  		Backbone.history.start()
+  		Backbone.history.started = true
 
 $(document).ready ->
   MeaningAndPurpose.initialize()
