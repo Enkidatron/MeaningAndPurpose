@@ -53,3 +53,6 @@ gem 'backbone-on-rails', '~> 1.1.2.0'
 # Will be used with backbone-react-component, which is in vendor folder
 gem 'react-rails', '~> 0.12.2.0'
 
+# Bootstrap for styling
+gem 'bootstrap-sass', '~>3.3.3'
+
