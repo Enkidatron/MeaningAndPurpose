@@ -1,3 +1,3 @@
 window.Quiz = React.createClass
 	render: ->
-		`<div class="row"><div class="col-md-12">Quiz</div><QuizIntro /><Question /><QuizSubmit /></div>`
+		`<div className="row"><div className="col-md-12"><QuizIntro /><Question text="I have a strong <b>sense of meaning and purpose</b> in life"/><QuizSubmit /></div></div>`
