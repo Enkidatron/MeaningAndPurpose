@@ -56,3 +56,9 @@ gem 'react-rails', '~> 0.12.2.0'
 # Bootstrap for styling
 gem 'bootstrap-sass', '~>3.3.3'
 
+# Gon for passing data into initial page load
+gem 'gon'
+
+# Rabl-rails for JSON and Gon
+gem 'rabl-rails'
+
