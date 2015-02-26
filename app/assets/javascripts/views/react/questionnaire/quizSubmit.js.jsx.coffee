@@ -1,3 +1,3 @@
 window.QuizSubmit = React.createClass
 	render: ->
-		`<div><p>QuizSubmit</p></div>`
+		`<div><button className="btn btn-primary">Submit</button></div>`

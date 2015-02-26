@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'app/home'
+
   devise_for :users
   resources :answers
 
@@ -8,7 +10,7 @@ Rails.application.routes.draw do
 
   resources :quizzes
 
-  root 'quizzes#index'
+  root 'app#home'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
