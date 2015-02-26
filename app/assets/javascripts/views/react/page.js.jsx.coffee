@@ -1,5 +1,7 @@
 window.Page = React.createClass
 	mixins: [Backbone.React.Component.mixin]
+	propTypes:
+		collection: React.PropTypes.object.isRequired
 	queries: [
 		text: "I have a strong <b>sense of meaning and purpose</b> in life"
 		onNumberChange: (event) -> console.log(event.target.value)
@@ -13,7 +15,7 @@ window.Page = React.createClass
 		`<div>
 			<Header />
 			<div className="container">
-				<Quiz questions={this.queries} />
+				<Quiz questions={this.props.collection.questions} answers={this.props.collection.answers} />
 			</div>
 			<Footer />
 		</div>`

@@ -1,10 +1,11 @@
 window.Quiz = React.createClass
 	propTypes:
-		questions: React.PropTypes.array.isRequired
+		questions: React.PropTypes.object.isRequired
+		answers: React.PropTypes.object.isRequired
 	render: ->
-		questions = (`<Question text={q.text} onNumberChange={q.onNumberChange} onTextChange={q.onTextChange} key={i}/>` for q,i in this.props.questions)
+		questions = (`<Question question={q} answer={this.props.answers.models[i]} key={i}/>` for q,i in this.props.questions.models)
 		`<div className="row"><div className="col-md-12">
 			<QuizIntro />
 			{questions}
-			<QuizSubmit />
+			<QuizSubmit answers={this.props.answers} />
 		</div></div>`

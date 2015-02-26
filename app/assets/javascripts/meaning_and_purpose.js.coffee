@@ -3,12 +3,13 @@ window.MeaningAndPurpose =
   Collections: {}
   Views: {}
   Routers: {}
-  initialize: -> 
-  	console.log 'MeaningAndPurpose.initialize'
-  	this.router = new MeaningAndPurpose.Routers.Questions()
-  	unless Backbone.history.started
-  		Backbone.history.start()
-  		Backbone.history.started = true
+  initialize: (question_data) -> 
+    # console.log 'MeaningAndPurpose.initialize'
+    this.questions = new MeaningAndPurpose.Collections.Questions(question_data)
+    this.router = new MeaningAndPurpose.Routers.Questions()
+    unless Backbone.history.started
+      Backbone.history.start()
+      Backbone.history.started = true
 
 $(document).ready ->
-  MeaningAndPurpose.initialize()
+  MeaningAndPurpose.initialize(gon.questions)
