@@ -1,3 +1,5 @@
-collection :@questions
-root :questions
-attributes :id, :question
+object false
+
+child(:@quiz) { attributes :id }
+child(:@questions) { attributes :id, :question }
+child(:current_user) { attributes :id }

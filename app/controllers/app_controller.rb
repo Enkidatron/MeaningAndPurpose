@@ -1,6 +1,9 @@
 class AppController < ApplicationController
+  before_action :authenticate_user!
+
   def home
-  	@questions = Question.all
-  	gon.rabl unless @questions.nil?
+  	@quiz = current_user.quiz
+  	@questions = @quiz.questions
+  	gon.rabl unless @questions.nil? or @quiz.nil?
   end
 end

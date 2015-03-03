@@ -27,11 +27,11 @@ ActiveRecord::Schema.define(version: 20150226034251) do
 
   create_table "questions", force: :cascade do |t|
     t.text     "question"
-    t.integer  "type"
+    t.integer  "questiontype"
     t.integer  "family"
     t.integer  "version"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "questionships", force: :cascade do |t|
