@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
   resources :quizzes
 
+  get 'graphs/user'
+
   root 'app#home'
 
   # The priority is based upon order of creation: first created -> highest priority.
