@@ -18,6 +18,8 @@
 //= require backbone
 //= require react
 //= require backbone-react-component-min
+//= require d3
+//= require c3
 //= require meaning_and_purpose
 //= require_tree ../templates
 //= require_tree ./models

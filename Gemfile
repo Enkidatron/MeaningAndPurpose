@@ -62,3 +62,7 @@ gem 'gon'
 # Rabl-rails for JSON and Gon
 gem 'rabl-rails'
 
+# D3 and C3 for charting
+gem 'd3-rails'
+gem 'c3-rails'
+
