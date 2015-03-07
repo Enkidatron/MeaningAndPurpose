@@ -12,7 +12,7 @@ window.QuestionAnswer = React.createClass
 	propTypes:
 		answer: React.PropTypes.object.isRequired
 	numberHandler: (event) ->
-		console.log 'numberHandler'
+		# console.log 'numberHandler'
 		this.props.answer.set({'intAnswer': event.target.value})
 	textHandler: (event) ->
 		# console.log 'textHandler'

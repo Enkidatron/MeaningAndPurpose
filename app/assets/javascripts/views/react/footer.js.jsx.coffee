@@ -1,3 +1,4 @@
 window.Footer = React.createClass
 	render: ->
-		`<nav className="navbar navbar-default navbar-fixed-bottom"><div className="container"><p>Footer</p></div></nav>`
+		# `<nav className="navbar navbar-default navbar-fixed-bottom"><div className="container"><p>Footer</p></div></nav>`
+		`<div className="footer"></div>`

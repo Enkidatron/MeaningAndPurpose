@@ -69,6 +69,6 @@ class ResponsesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def response_params
-      params[:response].permit(:created_at, :updated_at, :id)
+      params[:response].permit(:created_at, :updated_at, :id, :quiz_id, :user_id)
     end
 end

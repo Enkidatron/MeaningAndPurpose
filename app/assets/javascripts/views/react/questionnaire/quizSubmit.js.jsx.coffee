@@ -3,7 +3,7 @@ window.QuizSubmit = React.createClass
 		answers: React.PropTypes.object.isRequired
 		response: React.PropTypes.object.isRequired
 	handleClick: ->
-		console.log 'submit click'
+		# console.log 'submit click'
 		this.props.response.saveAllAndRefresh()
 		# console.log 'submit click done'
 		return null
