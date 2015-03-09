@@ -46,6 +46,7 @@ class MeaningAndPurpose.Routers.Questions extends Backbone.Router
 		# Get state from gon
 		MeaningAndPurpose.State.questions = new MeaningAndPurpose.Collections.Questions(gon.questions)
 		MeaningAndPurpose.State.user_graph_data = gon.data
+		MeaningAndPurpose.State.graph = new MeaningAndPurpose.Models.UserGraph({activeQuestion: -1})
 		userGraphView = new MeaningAndPurpose.Views.GraphsUser {}
 		$('body').html(userGraphView.render().$el)
 		userGraphView.renderChart()

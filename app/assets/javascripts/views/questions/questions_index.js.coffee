@@ -5,10 +5,10 @@ class MeaningAndPurpose.Views.QuestionsIndex extends Backbone.View
     this.$el.html(this.template)
     pageFactory = React.createFactory(Page)
     page = pageFactory
-      collections:
+      collection:
         questions: MeaningAndPurpose.State.questions
         answers: MeaningAndPurpose.State.answers
-      models:
+      model:
         response: MeaningAndPurpose.State.response
     React.render(page, this.$('.MeaningAndPurpose-container').get(0))
     return this

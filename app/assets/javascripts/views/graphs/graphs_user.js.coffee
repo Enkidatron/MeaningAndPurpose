@@ -6,8 +6,10 @@ class MeaningAndPurpose.Views.GraphsUser extends Backbone.View
 		this.$el.html(this.template)
 		pageFactory = React.createFactory(UserGraphPage)
 		page = pageFactory
-			collections:
+			collection:
 				questions: MeaningAndPurpose.State.questions
+			model:
+				graph: MeaningAndPurpose.State.graph
 		React.render(page, this.$('.userGraph-container').get(0))
 		return this
 	renderChart: ->
@@ -29,4 +31,10 @@ class MeaningAndPurpose.Views.GraphsUser extends Backbone.View
 					max: 10
 			line:
 				connectNull: false
+			legend:
+				item:
+					onmouseover: (id) ->
+						MeaningAndPurpose.State.graph.set({activeQuestion: id.split(" ")[-1..][0] * 1})
+					onmouseout: (id) ->
+						MeaningAndPurpose.State.graph.set({activeQuestion: -1})
 			)

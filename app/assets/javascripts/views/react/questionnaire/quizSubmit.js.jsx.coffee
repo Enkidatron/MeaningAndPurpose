@@ -1,6 +1,6 @@
 window.QuizSubmit = React.createClass
+	mixins: [Backbone.React.Component.mixin]
 	propTypes: 
-		answers: React.PropTypes.object.isRequired
 		response: React.PropTypes.object.isRequired
 	handleClick: ->
 		# console.log 'submit click'
