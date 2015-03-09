@@ -1,16 +1,19 @@
 Rails.application.routes.draw do
   get 'app/home'
 
-  devise_for :users
-  resources :answers
+  get 'graphs/user'
 
-  resources :responses
+  devise_for :users
+  
+  # resources :answers
+  post '/answers', to: 'answers#create'
+
+  # resources :responses
+  post '/responses', to: 'responses#create'
 
   resources :questions
 
   resources :quizzes
-
-  get 'graphs/user'
 
   root 'app#home'
 
