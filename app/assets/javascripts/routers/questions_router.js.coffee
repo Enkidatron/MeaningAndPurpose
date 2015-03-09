@@ -16,7 +16,7 @@ class MeaningAndPurpose.Routers.Questions extends Backbone.Router
 			this.init_quiz()
 	user_graph: ->
 		# console.log 'router.user_graph'
-		unless gon? and gon.questions? and gon.data?
+		unless gon? and gon.questions? and gon.data? and gon.textData?
 			$.ajax("/graphs/user.json", {success: (result, status, xhr) ->
 				window.gon = result
 				MeaningAndPurpose.router.init_user_graph()
@@ -46,6 +46,7 @@ class MeaningAndPurpose.Routers.Questions extends Backbone.Router
 		# Get state from gon
 		MeaningAndPurpose.State.questions = new MeaningAndPurpose.Collections.Questions(gon.questions)
 		MeaningAndPurpose.State.user_graph_data = gon.data
+		MeaningAndPurpose.State.user_text_data = gon.textData
 		MeaningAndPurpose.State.graph = new MeaningAndPurpose.Models.UserGraph({activeQuestion: -1})
 		userGraphView = new MeaningAndPurpose.Views.GraphsUser {}
 		$('body').html(userGraphView.render().$el)

@@ -7,12 +7,14 @@ class GraphsController < ApplicationController
 		answerArray = @questions.map do |que| 
 			responses.map do |r| 
 				answer = Answer.where(response: r, question: que).first
-				if answer.nil? then nil else answer.intAnswer end
+				if answer.nil? then nil else [answer.intAnswer, answer.textAnswer] end
 			end
 		end
-		answerArray = answerArray.each_with_index.map{|a,i| ["Question #{i+1}"] + a}
+		intAnswerArray = answerArray.each_with_index.map{|aa,i| ["Question #{i+1}"] + aa.map{|a| a[0] unless a.nil?}}
+		textAnswerArray = answerArray.map{|aa| aa.map{|a| a[1] unless a.nil?}}
 		dateArray = ['x'] + responses.map{|r| r.created_at.strftime('%Y-%m-%d')}
-		@data = [dateArray] + answerArray
+		@data = [dateArray] + intAnswerArray
+		@textData = textAnswerArray
 		gon.rabl
 	end
 end

@@ -10,6 +10,7 @@ class MeaningAndPurpose.Views.GraphsUser extends Backbone.View
 				questions: MeaningAndPurpose.State.questions
 			model:
 				graph: MeaningAndPurpose.State.graph
+			answerTexts: MeaningAndPurpose.State.user_text_data
 		React.render(page, this.$('.userGraph-container').get(0))
 		return this
 	renderChart: ->

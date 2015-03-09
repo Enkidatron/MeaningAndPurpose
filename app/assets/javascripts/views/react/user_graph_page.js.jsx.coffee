@@ -1,8 +1,9 @@
 window.UserGraphPage = React.createClass
 	mixins: [Backbone.React.Component.mixin]
-	# propTypes:
-	# 	collections: React.PropTypes.object.isRequired
-	# 	models: React.PropTypes.object.isRequired
+	propTypes:
+		collection: React.PropTypes.object.isRequired
+		model: React.PropTypes.object.isRequired
+		answerTexts: React.PropTypes.array.isRequired
 	# getInitialState: ->
 	# 	return { activeQuestion: -1}
 	render: ->
@@ -10,7 +11,7 @@ window.UserGraphPage = React.createClass
 		`<div>
 			<Header />
 			<div className="container">
-				<UserGraph /><GraphQuestionList questions={this.state.questions} activeQuestion={this.state.graph.activeQuestion}/>
+				<UserGraph /><GraphQuestionList questions={this.state.questions} activeQuestion={this.state.graph.activeQuestion} answerTexts={this.props.answerTexts}/>
 			</div>
 			<Footer />
 		</div>`
