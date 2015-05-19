@@ -4,7 +4,7 @@ class GraphsController < ApplicationController
 	def user
 		responses = current_user.responses
 		unless responses.nil? or responses.length == 0
-			@questions = responses.map{|r| r.quiz.questions}.flatten!.uniq!
+			@questions = responses.map{|r| r.quiz.questions}.flatten.uniq
 			answerArray = @questions.map do |que| 
 				responses.map do |r| 
 					answer = Answer.where(response: r, question: que).first
