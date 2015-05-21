@@ -1,7 +1,8 @@
-class MeaningAndPurpose.Routers.Questions extends Backbone.Router
+class MeaningAndPurpose.Routers.Router extends Backbone.Router
 	routes:
 		"(#)graphs(/user)(/)": "user_graph"
 		"(#)": "quiz"
+		"(#)admin/questions(/)": "admin_questions"
 	quiz: ->
 		# console.log 'router.quiz'
 		# Set Application State
@@ -23,6 +24,14 @@ class MeaningAndPurpose.Routers.Questions extends Backbone.Router
 			})
 		else
 			this.init_user_graph()
+	admin_questions: ->
+		unless gon? and gon.admin_questions? and gon.admin_quizzes? and gon.admin_questionships?
+			$.ajax("/admin/questions.json", {success: (result, status, xhr) ->
+				window.gon = result
+				MeaningAndPurpose.router.init_admin_questions()
+			})
+		else
+			this.init_admin_questions() 
 	init_quiz: ->
 		# console.log 'init_quiz'
 		MeaningAndPurpose.State.questions = new MeaningAndPurpose.Collections.Questions(gon.questions)
@@ -51,3 +60,9 @@ class MeaningAndPurpose.Routers.Questions extends Backbone.Router
 		userGraphView = new MeaningAndPurpose.Views.GraphsUser {}
 		$('body').html(userGraphView.render().$el)
 		userGraphView.renderChart()
+	init_admin_questions: ->
+		MeaningAndPurpose.State.questions = new MeaningAndPurpose.Collections.Questions(gon.admin_questions)
+		MeaningAndPurpose.State.quizzes = new MeaningAndPurpose.Collections.Quizzes(gon.admin_quizzes)
+		MeaningAndPurpose.State.questionships = new MeaningAndPurpose.Collections.Questionships(gon.admin_questionships)
+		adminQuestionsView = new MeaningAndPurpose.Views.AdminQuestions {}
+		$('body').html(adminQuestionsView.render().$el)

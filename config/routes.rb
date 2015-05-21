@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   get 'graphs/user'
 
+  get 'admin/questions'
+
   devise_for :users
   
   # resources :answers

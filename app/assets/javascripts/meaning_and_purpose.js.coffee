@@ -6,7 +6,7 @@ window.MeaningAndPurpose =
   State: {}
   initialize: -> 
     # console.log 'MeaningAndPurpose.initialize'
-    this.router = new MeaningAndPurpose.Routers.Questions()
+    this.router = new MeaningAndPurpose.Routers.Router()
     unless Backbone.history.started
       Backbone.history.start({pushState: true})
       # console.log 'started history'
