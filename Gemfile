@@ -63,6 +63,7 @@ gem 'react-rails', '~> 0.12.2.0'
 
 # Bootstrap for styling
 gem 'bootstrap-sass', '~>3.3.3'
+gem 'devise-bootstrap-views'
 
 # Gon for passing data into initial page load
 gem 'gon'
