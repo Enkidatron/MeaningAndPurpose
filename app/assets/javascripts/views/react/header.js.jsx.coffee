@@ -19,6 +19,7 @@ window.Header = React.createClass
 					<li><a href="/graphs/user">Graphs</a></li>
 				</ul>
 				<ul className="nav navbar-nav navbar-right">
+					<li><a href="https://docs.google.com/forms/d/1Hp6Z9QKdiDPLyDYC7-OETXCOTnR9zXO0TCPUjNWvAHA/viewform?usp=send_form" data-bypass="" target="_blank">Submit Feedback</a></li>
 					<li><a href="/users/edit" data-bypass="">Edit Account</a></li>
 					<li><a href="/users/sign_out" data-bypass="" data-method="delete">Sign Out</a></li>
 				</ul>
