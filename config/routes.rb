@@ -17,6 +17,8 @@ Rails.application.routes.draw do
 
   resources :quizzes
 
+  resources :questionships
+
   root 'app#home'
 
   # The priority is based upon order of creation: first created -> highest priority.

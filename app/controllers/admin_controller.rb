@@ -8,6 +8,7 @@ class AdminController < ApplicationController
 		@questionships = Questionship.all
 	end
 
+	private
 	def authenticate_admin!
 		unless current_user.admin?
 			# TODO: This does not seem to be working. The redirect works, but not the flash

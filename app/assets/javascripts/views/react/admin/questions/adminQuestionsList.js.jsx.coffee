@@ -8,7 +8,7 @@ window.AdminQuestionsList = React.createClass
 		return {
 			activeQuizId: -1
 		}
-	setActiveQuiz: (id) ->
+	setActiveQuizHandler: (id) ->
 		self = this
 		->
 			self.setState(
@@ -21,13 +21,13 @@ window.AdminQuestionsList = React.createClass
 		activeQuestions = (question for question in this.props.questions when question.id in activeQuestionIds)
 		otherQuestions = (question for question in this.props.questions when question.id not in activeQuestionIds)
 		`<div className="row">
-			<div className="col-md-4"><AdminQuestionsListQuizPanel quizzes={this.props.quizzes} activeQuizId={this.state.activeQuizId} setActiveQuiz={this.setActiveQuiz} /></div>
+			<div className="col-md-4"><AdminQuestionsListQuizPanel quizzes={this.props.quizzes} activeQuizId={this.state.activeQuizId} setActiveQuiz={this.setActiveQuizHandler} /></div>
 			<div className="col-md-8">
 				<div className="row"><div className="col-md-12">
-					<AdminQuestionsListActiveQuestionsPanel questions={activeQuestions} />
+					<AdminQuestionsListActiveQuestionsPanel questions={activeQuestions} activeQuizId={this.state.activeQuizId} />
 				</div></div>
 				<div className="row"><div className="col-md-12">
-					<AdminQuestionsListOtherQuestionsPanel questions={otherQuestions} />
+					<AdminQuestionsListOtherQuestionsPanel questions={otherQuestions} activeQuizId={this.state.activeQuizId} />
 				</div></div>
 			</div>
 		</div>`
