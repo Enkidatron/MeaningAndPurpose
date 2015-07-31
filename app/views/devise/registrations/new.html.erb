@@ -32,15 +32,15 @@
         </div>
         <div class="form-group">
           <%= f.label :gender %><br />
-          <%= f.select :gender, options_for_select(['Male','Female','Trans*']), {}, {class: "form-control"} %>
+          <%= f.select :gender, options_for_select(['Prefer not to disclose','Male','Female','Trans*'], f.object.gender), {}, {class: "form-control"} %>
         </div>
         <div class="form-group">
           <%= f.label :ethnicity %><br />
-          <%= f.select :ethnicity, options_for_select(['Non-Hispanic White or Euro-American','Black, Afro-Caribbean, or African American','Latino or Hispanic American','East Asian or Asian American','South Asian or Indian American','Middle Eastern or Arab American','Native American or Alaskan Native','Other']), {}, {class: "form-control"} %>
+          <%= f.select :ethnicity, options_for_select(['Prefer not to disclose','Non-Hispanic White or Euro-American','Black, Afro-Caribbean, or African American','Latino or Hispanic American','East Asian or Asian American','South Asian or Indian American','Middle Eastern or Arab American','Native American or Alaskan Native','Other'], f.object.ethnicity), {}, {class: "form-control"} %>
         </div>
         <div class="form-group">
           <%= f.label :religion %><br />
-          <%= f.select :religion, options_for_select(['Christian','Muslim','Atheist/Agnostic/Nonreligious','Hindu','Spiritual but not Religious','Chinese Traditional','Buddhist','Tribal Religious','Sikh','Jewish','Baha\'i','Other']), {}, {class: "form-control"} %>
+          <%= f.select :religion, options_for_select(['Prefer not to disclose','Christian','Muslim','Hindu','Atheist/Agnostic/Nonreligious','Spiritual but not Religious','Chinese Traditional','Buddhist','Tribal Religious','Sikh','Jewish','Baha\'i','Other'], f.object.religion), {}, {class: "form-control"} %>
         </div>
         <%= f.submit t('.sign_up', :default => "Sign up"), class: "btn btn-primary" %>
       <% end %>
