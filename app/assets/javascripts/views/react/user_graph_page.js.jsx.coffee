@@ -11,7 +11,12 @@ window.UserGraphPage = React.createClass
 		`<div>
 			<Header />
 			<div className="container">
-				<UserGraph /><GraphQuestionList questions={this.state.questions} activeQuestion={this.state.graph.activeQuestion} answerTexts={this.props.answerTexts}/>
+				<UserGraph />
+				<div className="row"><div className="col-md-12"><div className="well well-sm">
+					<p>To see a graph of your responses to individual questions, hover over the legend above. (The text of each question will appear below.)</p>
+					<p>To see your text responses, click on questions below.</p>
+				</div></div></div>
+				<GraphQuestionList questions={this.state.questions} activeQuestion={this.state.graph.activeQuestion} answerTexts={this.props.answerTexts}/>
 			</div>
 			<Footer />
 		</div>`
