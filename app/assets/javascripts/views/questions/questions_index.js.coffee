@@ -10,6 +10,7 @@ class MeaningAndPurpose.Views.QuestionsIndex extends Backbone.View
         answers: MeaningAndPurpose.State.answers
       model:
         response: MeaningAndPurpose.State.response
+      already_submitted: MeaningAndPurpose.State.already_submitted
     React.render(page, this.$('.MeaningAndPurpose-container').get(0))
     return this
   	

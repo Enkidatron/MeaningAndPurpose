@@ -6,7 +6,7 @@ class MeaningAndPurpose.Routers.Questions extends Backbone.Router
 		# console.log 'router.quiz'
 		# Set Application State
 		# Get user_id, Quiz, and Questions from gon
-		unless gon? and gon.questions? and gon.quiz?
+		unless gon? and gon.questions? and gon.quiz? and gon.already_submitted?
 			$.ajax("/app/home.json", {success: (result, status, xhr) ->
 				# console.log 'router.quiz ajax'
 				window.gon = result
@@ -14,6 +14,7 @@ class MeaningAndPurpose.Routers.Questions extends Backbone.Router
 			})
 		else
 			this.init_quiz()
+			gon = null
 	user_graph: ->
 		# console.log 'router.user_graph'
 		unless gon? and gon.questions? and gon.data? and gon.textData?
@@ -23,11 +24,13 @@ class MeaningAndPurpose.Routers.Questions extends Backbone.Router
 			})
 		else
 			this.init_user_graph()
+			gon = null
 	init_quiz: ->
 		# console.log 'init_quiz'
 		MeaningAndPurpose.State.questions = new MeaningAndPurpose.Collections.Questions(gon.questions)
 		MeaningAndPurpose.State.quiz = new MeaningAndPurpose.Models.Quiz(gon.quiz)
 		MeaningAndPurpose.State.user_id = gon.current_user.id
+		MeaningAndPurpose.State.already_submitted = gon.already_submitted
 		# Match the response to the quiz
 		MeaningAndPurpose.State.response = new MeaningAndPurpose.Models.Response()
 		MeaningAndPurpose.State.response.set("quiz_id", MeaningAndPurpose.State.quiz.get("id"))
