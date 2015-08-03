@@ -17,6 +17,7 @@ window.Header = React.createClass
 				<ul className="nav navbar-nav navbar-left">
 					<li><a href="#">Questionnaire</a></li>
 					<li><a href="/graphs/user">Graphs</a></li>
+					<li><a href="/resources" data-bypass="">Resources</a></li>
 				</ul>
 				<ul className="nav navbar-nav navbar-right">
 					<li><a href="https://docs.google.com/forms/d/1Hp6Z9QKdiDPLyDYC7-OETXCOTnR9zXO0TCPUjNWvAHA/viewform?usp=send_form" data-bypass="" target="_blank">Submit Feedback</a></li>

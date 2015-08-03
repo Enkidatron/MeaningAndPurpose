@@ -8,4 +8,7 @@ class AppController < ApplicationController
     @already_submitted = (Response.where(user_id: current_user.id).where("created_at >= ?", Time.zone.now.beginning_of_day).count > 0)
   	gon.rabl unless @questions.nil? or @quiz.nil?
   end
+	
+	def resources
+	end
 end

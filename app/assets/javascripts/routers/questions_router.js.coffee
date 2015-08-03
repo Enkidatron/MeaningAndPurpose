@@ -2,8 +2,12 @@ class MeaningAndPurpose.Routers.Questions extends Backbone.Router
 	routes:
 		"(#)graphs(/user)(/)": "user_graph"
 		"(#)": "quiz"
+		"resources": "resources"
+	resources: ->
+# 		console.log('router.resources')
+		return null
 	quiz: ->
-		# console.log 'router.quiz'
+# 		console.log 'router.quiz'
 		# Set Application State
 		# Get user_id, Quiz, and Questions from gon
 		unless gon? and gon.questions? and gon.quiz? and gon.already_submitted?
@@ -16,7 +20,7 @@ class MeaningAndPurpose.Routers.Questions extends Backbone.Router
 			this.init_quiz()
 			gon = null
 	user_graph: ->
-		# console.log 'router.user_graph'
+# 		console.log 'router.user_graph'
 		unless gon? and gon.questions? and gon.data? and gon.textData?
 			$.ajax("/graphs/user.json", {success: (result, status, xhr) ->
 				window.gon = result

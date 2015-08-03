@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   get 'app/home'
+	
+	get 'resources', to: 'app#resources'
 
   get 'graphs/user'
 
