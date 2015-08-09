@@ -56,3 +56,10 @@
   <%= link_to "Home", :root, {bypass: ""} %>
 
 </div>
+<script type="text/javascript">
+	if(Backbone != null){
+		if(Backbone.history != null){
+			Backbone.history.loadUrl('/resources')
+		}
+	}
+</script>
