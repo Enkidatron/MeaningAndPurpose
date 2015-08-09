@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
   get 'app/home'
+	
+	get 'resources', to: 'app#resources'
 
   get 'graphs/user'
 
   get 'admin/questions'
 
-  devise_for :users
+  devise_for :users, :controllers => { registrations: 'registrations' }
   
   # resources :answers
   post '/answers', to: 'answers#create'

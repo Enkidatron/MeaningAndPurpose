@@ -3,11 +3,15 @@ class MeaningAndPurpose.Routers.Router extends Backbone.Router
 		"(#)graphs(/user)(/)": "user_graph"
 		"(#)": "quiz"
 		"(#)admin/questions(/)": "admin_questions"
+		"resources": "resources"
+	resources: ->
+# 		console.log('router.resources')
+		return null
 	quiz: ->
-		# console.log 'router.quiz'
+# 		console.log 'router.quiz'
 		# Set Application State
 		# Get user_id, Quiz, and Questions from gon
-		unless gon? and gon.questions? and gon.quiz?
+		unless gon? and gon.questions? and gon.quiz? and gon.already_submitted?
 			$.ajax("/app/home.json", {success: (result, status, xhr) ->
 				# console.log 'router.quiz ajax'
 				window.gon = result
@@ -15,8 +19,9 @@ class MeaningAndPurpose.Routers.Router extends Backbone.Router
 			})
 		else
 			this.init_quiz()
+			gon = null
 	user_graph: ->
-		# console.log 'router.user_graph'
+# 		console.log 'router.user_graph'
 		unless gon? and gon.questions? and gon.data? and gon.textData?
 			$.ajax("/graphs/user.json", {success: (result, status, xhr) ->
 				window.gon = result
@@ -24,6 +29,7 @@ class MeaningAndPurpose.Routers.Router extends Backbone.Router
 			})
 		else
 			this.init_user_graph()
+			gon = null
 	admin_questions: ->
 		unless gon? and gon.admin_questions? and gon.admin_quizzes? and gon.admin_questionships?
 			$.ajax("/admin/questions.json", {success: (result, status, xhr) ->
@@ -32,11 +38,13 @@ class MeaningAndPurpose.Routers.Router extends Backbone.Router
 			})
 		else
 			this.init_admin_questions() 
+			gon = null
 	init_quiz: ->
 		# console.log 'init_quiz'
 		MeaningAndPurpose.State.questions = new MeaningAndPurpose.Collections.Questions(gon.questions)
 		MeaningAndPurpose.State.quiz = new MeaningAndPurpose.Models.Quiz(gon.quiz)
 		MeaningAndPurpose.State.user_id = gon.current_user.id
+		MeaningAndPurpose.State.already_submitted = gon.already_submitted
 		# Match the response to the quiz
 		MeaningAndPurpose.State.response = new MeaningAndPurpose.Models.Response()
 		MeaningAndPurpose.State.response.set("quiz_id", MeaningAndPurpose.State.quiz.get("id"))
@@ -54,12 +62,23 @@ class MeaningAndPurpose.Routers.Router extends Backbone.Router
 	init_user_graph: ->
 		# Get state from gon
 		MeaningAndPurpose.State.questions = new MeaningAndPurpose.Collections.Questions(gon.questions)
-		MeaningAndPurpose.State.user_graph_data = gon.data
-		MeaningAndPurpose.State.user_text_data = gon.textData
-		MeaningAndPurpose.State.graph = new MeaningAndPurpose.Models.UserGraph({activeQuestion: -1})
+# 		MeaningAndPurpose.State.user_graph_data = gon.data
+# 		MeaningAndPurpose.State.user_text_data = gon.textData
+		MeaningAndPurpose.State.graph = new MeaningAndPurpose.Models.UserGraph
+			activeQuestion: -1
+			data: gon.data
+			answerTexts: gon.textData
+			forceUpdate: false
+			show: "average"
 		userGraphView = new MeaningAndPurpose.Views.GraphsUser {}
 		$('body').html(userGraphView.render().$el)
-		userGraphView.renderChart()
+		# now we need to update the model, which will cause the React components to re-render
+		# If we were pure React, the graph would have rendered the first time, but because
+		# the React rendering is inside of Backbone rendering, we need to do this
+		MeaningAndPurpose.State.graph.set
+			forceUpdate: true
+		MeaningAndPurpose.State.graph.set
+			forceUpdate: false
 	init_admin_questions: ->
 		MeaningAndPurpose.State.questions = new MeaningAndPurpose.Collections.Questions(gon.admin_questions)
 		MeaningAndPurpose.State.quizzes = new MeaningAndPurpose.Collections.Quizzes(gon.admin_quizzes)

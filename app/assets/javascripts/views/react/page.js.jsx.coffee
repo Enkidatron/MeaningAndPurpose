@@ -4,10 +4,14 @@ window.Page = React.createClass
 	# 	collections: React.PropTypes.object.isRequired
 	# 	models: React.PropTypes.object.isRequired
 	render: ->
+		if this.props.already_submitted
+			el = `<QuizPlaceholder />` 
+		else
+			el = `<Quiz questions={this.state.questions} answers={this.state.answers} responseModel={this.props.model.response} answerModels={this.props.collection.answers} />`
 		`<div>
 			<Header />
 			<div className="container">
-				<Quiz questions={this.state.questions} answers={this.state.answers} responseModel={this.props.model.response} answerModels={this.props.collection.answers} />
+				{el}
 			</div>
 			<Footer />
 		</div>`
