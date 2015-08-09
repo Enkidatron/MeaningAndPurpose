@@ -5,12 +5,12 @@ window.GraphQuestionList = React.createClass
 		answerTexts: React.PropTypes.array.isRequired
 	getInitialState: ->
 		return {
-			height: window.innerHeight - (50+1+20 + 1 + 320)
+			height: window.innerHeight - (50+1+20 + 1 + 320 + 100)
 			scrollTop: 0
 		}
 	handleResize: (e) ->
 		this.setState(
-			height: window.innerHeight - (50+1+20 + 1 + 320)
+			height: window.innerHeight - (50+1+20 + 1 + 320 + 100)
 		)
 	componentDidMount: ->
 		window.addEventListener('resize', this.handleResize)

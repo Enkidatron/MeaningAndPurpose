@@ -52,9 +52,20 @@ class MeaningAndPurpose.Routers.Questions extends Backbone.Router
 	init_user_graph: ->
 		# Get state from gon
 		MeaningAndPurpose.State.questions = new MeaningAndPurpose.Collections.Questions(gon.questions)
-		MeaningAndPurpose.State.user_graph_data = gon.data
-		MeaningAndPurpose.State.user_text_data = gon.textData
-		MeaningAndPurpose.State.graph = new MeaningAndPurpose.Models.UserGraph({activeQuestion: -1})
+# 		MeaningAndPurpose.State.user_graph_data = gon.data
+# 		MeaningAndPurpose.State.user_text_data = gon.textData
+		MeaningAndPurpose.State.graph = new MeaningAndPurpose.Models.UserGraph
+			activeQuestion: -1
+			data: gon.data
+			answerTexts: gon.textData
+			forceUpdate: false
+			show: "average"
 		userGraphView = new MeaningAndPurpose.Views.GraphsUser {}
 		$('body').html(userGraphView.render().$el)
-		userGraphView.renderChart()
+		# now we need to update the model, which will cause the React components to re-render
+		# If we were pure React, the graph would have rendered the first time, but because
+		# the React rendering is inside of Backbone rendering, we need to do this
+		MeaningAndPurpose.State.graph.set
+			forceUpdate: true
+		MeaningAndPurpose.State.graph.set
+			forceUpdate: false
