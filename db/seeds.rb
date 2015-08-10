@@ -28,6 +28,7 @@ user.email = 'test@example.com'
 user.encrypted_password = '$2a$10$AdDatvXeeoyezV3N.SgzyuaD87SwprRZeWMdVxuUL67q8rbep15Au'
 user.password = 'password'
 user.quiz_id = quiz.id
+user.admin = true
 user.save!
 
 [quiz].each_with_index do |quiz,i|

@@ -15,8 +15,6 @@ window.AdminQuestionsList = React.createClass
 				activeQuizId: id
 			)
 	render: ->
-		# This is entirely wrong, but illustrative
-		# activeQuestions = (question for question in questions when question.id in activeQuiz.questions)
 		activeQuestionIds = (questionship.question_id for questionship in this.props.questionships when questionship.quiz_id == this.state.activeQuizId)
 		activeQuestions = (question for question in this.props.questions when question.id in activeQuestionIds)
 		otherQuestions = (question for question in this.props.questions when question.id not in activeQuestionIds)
