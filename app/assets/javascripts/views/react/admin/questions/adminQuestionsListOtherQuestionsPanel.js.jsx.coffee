@@ -4,8 +4,12 @@ window.AdminQuestionsListOtherQuestionsPanel = React.createClass
 		activeQuizId: React.PropTypes.number.isRequired
 	createQshipHandler: (question_id) ->
 		quiz_id = this.props.activeQuizId
-		->
-			MeaningAndPurpose.State.questionships.create({quiz_id: quiz_id, question_id: question_id})
+		if quiz_id != -1
+			->
+				MeaningAndPurpose.State.questionships.create({quiz_id: quiz_id, question_id: question_id})
+		else
+			->
+				return null
 	createQuestion: ->
 		MeaningAndPurpose.State.questions.create({version: 1, question: "New Question"})
 	render: ->

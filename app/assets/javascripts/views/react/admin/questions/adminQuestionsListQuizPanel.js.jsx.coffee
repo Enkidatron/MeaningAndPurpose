@@ -7,7 +7,7 @@ window.AdminQuestionsListQuizPanel = React.createClass
 	createQuiz: ->
 		MeaningAndPurpose.State.quizzes.create({version: 1, name: "New Quiz"})
 	render: ->
-		quizRows = (`<QuizRow quiz={quiz} clickAction={this.props.setActiveQuiz(quiz.id)} active={this.props.activeQuizId == quiz.id} key={quiz.id} />` for quiz in this.props.quizzes)
+		quizRows = (`<QuizRow quiz={quiz} setActiveQuiz={this.props.setActiveQuiz} active={this.props.activeQuizId == quiz.id} key={quiz.id} />` for quiz in this.props.quizzes)
 		panelheader = `<div>Quizzes<div className="pull-right"><rb.Button bsSize="small" bsStyle="primary" onClick={this.createQuiz}>New Quiz</rb.Button></div></div>`
 		`<rb.Panel header={panelheader}>
 			<rb.Table fill>
