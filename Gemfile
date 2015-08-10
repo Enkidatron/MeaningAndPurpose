@@ -65,6 +65,9 @@ gem 'react-rails', '~> 1.1.0'
 gem 'bootstrap-sass', '~>3.3.3'
 gem 'devise-bootstrap-views'
 
+# React-Bootstrap-Rails gives JSX/React versions of Bootstrap objects
+gem 'react-bootstrap-rails'
+
 # Gon for passing data into initial page load
 gem 'gon'
 

@@ -18,6 +18,7 @@
 //= require backbone
 //= require react
 //= require backbone-react-component-min
+//= require react_bootstrap
 //= require d3
 //= require c3
 //= require meaning_and_purpose
@@ -27,3 +28,4 @@
 //= require_tree ./views
 //= require_tree ./routers
 //= require_tree .
+window.rb = window.ReactBootstrap

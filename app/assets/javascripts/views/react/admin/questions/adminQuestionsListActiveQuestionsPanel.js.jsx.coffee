@@ -2,22 +2,18 @@ window.AdminQuestionsListActiveQuestionsPanel = React.createClass
 	propTypes:
 		questions: React.PropTypes.array.isRequired
 		activeQuizId: React.PropTypes.number.isRequired
-	deleteQuestionshipHandler: (quiz_id, question_id) ->
+	deleteQshipHandler: (question_id) ->
+		quiz_id = this.props.activeQuizId
 		->
 			questionship = (q for q in MeaningAndPurpose.State.questionships.models when q.get('quiz_id') == quiz_id and q.get('question_id') == question_id)[0]
 			questionship.destroy()
 	render: ->
-		questionRows = (
-			`<tr key={question.id} >
-				<td>{question.id}</td>
-				<td width="100%">{question.question}</td>
-				<td><button className="btn" onClick={this.deleteQuestionshipHandler(this.props.activeQuizId, question.id)}>-</button></td>
-			</tr>` for question in this.props.questions)
-		`<div className="panel panel-default"> 
-			<div className="panel-heading">Active Questions</div>
-			<table className="table">
+		questionRows = (`<QuestionRow question={question} action={this.deleteQshipHandler(question.id)} actionText="-" key={question.id} />` for question in this.props.questions)
+		panelheader=`<div>Active Questions</div>`
+		`<rb.Panel header={panelheader}> 
+			<rb.Table fill>
 				<tbody>
 					{questionRows}
 				</tbody>
-			</table>
-		</div>`
+			</rb.Table>
+		</rb.Panel>`

@@ -6,7 +6,7 @@ window.AdminQuestionsList = React.createClass
 		questionships: React.PropTypes.array.isRequired
 	getInitialState: ->
 		return {
-			activeQuizId: -1
+			activeQuizId: this.props.quizzes[0].id
 		}
 	setActiveQuizHandler: (id) ->
 		self = this

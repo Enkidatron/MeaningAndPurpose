@@ -11,9 +11,9 @@ class AdminController < ApplicationController
 	private
 	def authenticate_admin!
 		unless current_user.admin?
-			# TODO: This does not seem to be working. The redirect works, but not the flash
-			flash[:error] = "You must be an Admin to view the question list"
-			redirect_to root_path
+			# TODO: This does not seem to be working. The redirect works, but not the flash (?)
+# 			flash[:error] = "You must be an Admin to view the question list"
+			redirect_to root_path, :flash => {error: "You must be an Admin to view the question list"}
 		end
 	end
 end

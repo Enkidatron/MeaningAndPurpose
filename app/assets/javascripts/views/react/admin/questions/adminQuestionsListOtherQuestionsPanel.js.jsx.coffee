@@ -2,22 +2,19 @@ window.AdminQuestionsListOtherQuestionsPanel = React.createClass
 	propTypes:
 		questions: React.PropTypes.array.isRequired
 		activeQuizId: React.PropTypes.number.isRequired
-	createQuestionshipHandler: (quiz_id, question_id) ->
+	createQshipHandler: (question_id) ->
+		quiz_id = this.props.activeQuizId
 		->
 			MeaningAndPurpose.State.questionships.create({quiz_id: quiz_id, question_id: question_id})
-	createQuestionRow: (question) ->
-		if this.props.activeQuizId != -1 
-			addButton = `<button className="btn" onClick={this.createQuestionshipHandler(this.props.activeQuizId, question.id)} >+</button>`
-		else
-			addButton = ''
-		`<tr key={question.id} ><td>{question.id}</td><td width="100%">{question.question}</td><td>{addButton}</td></tr>`
+	createQuestion: ->
+		MeaningAndPurpose.State.questions.create({version: 1, question: "New Question"})
 	render: ->
-		questionRows = (this.createQuestionRow(question) for question in this.props.questions)
-		`<div className="panel panel-default">
-			<div className="panel-heading">Other Questions</div>
-			<table className="table">
+		questionRows = (`<QuestionRow question={question} action={this.createQshipHandler(question.id)} actionText="+" key={question.id} />` for question in this.props.questions)
+		panelheader = `<div>Other Questions<div className="pull-right"><rb.Button bsSize="small" bsStyle="primary" onClick={this.createQuestion}>New Question</rb.Button></div></div>`
+		`<rb.Panel header={panelheader}>
+			<rb.Table fill>
 				<tbody>
 					{questionRows}
 				</tbody>
-			</table>
-		</div>`
+			</rb.Table>
+		</rb.Panel>`
