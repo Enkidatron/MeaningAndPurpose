@@ -32,17 +32,32 @@
         </div>
         <div class="form-group">
           <%= f.label :gender %><br />
-          <%= f.select :gender, options_for_select(['Prefer not to disclose','Male','Female','Trans*'], f.object.gender), {}, {class: "form-control"} %>
+          <%= f.select :gender, options_for_select(['','Prefer not to disclose','Male','Female','Trans*'], f.object.gender), {}, {class: "form-control"} %>
         </div>
         <div class="form-group">
           <%= f.label :ethnicity %><br />
-          <%= f.select :ethnicity, options_for_select(['Prefer not to disclose','Non-Hispanic White or Euro-American','Black, Afro-Caribbean, or African American','Latino or Hispanic American','East Asian or Asian American','South Asian or Indian American','Middle Eastern or Arab American','Native American or Alaskan Native','Other'], f.object.ethnicity), {}, {class: "form-control"} %>
+          <%= f.select :ethnicity, options_for_select(['','Prefer not to disclose','Non-Hispanic White or Euro-American','Black, Afro-Caribbean, or African American','Latino or Hispanic American','East Asian or Asian American','South Asian or Indian American','Middle Eastern or Arab American','Native American or Alaskan Native','Other'], f.object.ethnicity), {}, {class: "form-control"} %>
         </div>
         <div class="form-group">
           <%= f.label :religion %><br />
-          <%= f.select :religion, options_for_select(['Prefer not to disclose','Christian','Muslim','Hindu','Atheist/Agnostic/Nonreligious','Spiritual but not Religious','Chinese Traditional','Buddhist','Tribal Religious','Sikh','Jewish','Baha\'i','Other'], f.object.religion), {}, {class: "form-control"} %>
+          <%= f.select :religion, options_for_select(['','Prefer not to disclose','Christian','Muslim','Hindu','Atheist/Agnostic/Nonreligious','Spiritual but not Religious','Chinese Traditional','Buddhist','Tribal Religious','Sikh','Jewish','Baha\'i','Other'], f.object.religion), {}, {class: "form-control"} %>
+        </div>
+				<div class="form-group">
+					<%= f.label :country %><br />
+					<%= f.text_field :country, class: "form-control" %>
+        </div>
+				<div class="form-group">
+					<%= f.label :education %><br />
+					<%= f.select :education, options_for_select(['','Prefer not to disclose','Non-traditional schooling','Completed high school','Some college','Completed bachelor of arts','Some graduate education','Completed graduate education'], f.object.education), {}, {class: "form-control"} %>
+        </div>
+				<div class="form-group">
+					<%= f.label :family_income %><br />
+					<%= f.select :family_income, options_for_select(['','Prefer not to disclose','Below $25,000','$25,000-$45,000','$45,000-$65,000','$65,000-$85,000','$85,000-$105,000','Above $105,000'], f.object.family_income), {}, {class: "form-control"} %>
         </div>
         <%= f.submit t('.sign_up', :default => "Sign up"), class: "btn btn-primary" %>
+				<br /><br /><div class="well well-sm">
+					We will never sell or trade your information, and it will be used only for research purposes to advance science. We will also provide you with occasional updates about the app and other Intentional Insights contents. We welcome you to to <a href="http://s.bl-1.com/h/rSTgXm1?url=http://intentionalinsights.org/about" target="_blank" >learn more</a> about and <a href="http://s.bl-1.com/h/rSThc83?url=http://intentionalinsights.org/view/donate" target="_blank" >support</a> Intentional Insights, the nonprofit organization that created the app.
+				</div>
       <% end %>
     </div>
   </div>
