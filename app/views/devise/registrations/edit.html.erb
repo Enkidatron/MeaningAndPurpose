@@ -36,15 +36,27 @@
         </div>
         <div class="form-group">
           <%= f.label :gender %><br />
-          <%= f.select :gender, options_for_select(['Prefer not to disclose','Male','Female','Trans*'], f.object.gender), {}, {class: "form-control"} %>
+          <%= f.select :gender, options_for_select(['','Prefer not to disclose','Male','Female','Trans*'], f.object.gender), {}, {class: "form-control"} %>
         </div>
         <div class="form-group">
           <%= f.label :ethnicity %><br />
-          <%= f.select :ethnicity, options_for_select(['Prefer not to disclose','Non-Hispanic White or Euro-American','Black, Afro-Caribbean, or African American','Latino or Hispanic American','East Asian or Asian American','South Asian or Indian American','Middle Eastern or Arab American','Native American or Alaskan Native','Other'], f.object.ethnicity), {}, {class: "form-control"} %>
+          <%= f.select :ethnicity, options_for_select(['','Prefer not to disclose','Non-Hispanic White or Euro-American','Black, Afro-Caribbean, or African American','Latino or Hispanic American','East Asian or Asian American','South Asian or Indian American','Middle Eastern or Arab American','Native American or Alaskan Native','Other'], f.object.ethnicity), {}, {class: "form-control"} %>
         </div>
         <div class="form-group">
           <%= f.label :religion %><br />
-          <%= f.select :religion, options_for_select(['Prefer not to disclose','Christian','Muslim','Hindu','Atheist/Agnostic/Nonreligious','Spiritual but not Religious','Chinese Traditional','Buddhist','Tribal Religious','Sikh','Jewish','Baha\'i','Other'], f.object.religion), {}, {class: "form-control"} %>
+          <%= f.select :religion, options_for_select(['','Prefer not to disclose','Christian','Muslim','Hindu','Atheist/Agnostic/Nonreligious','Spiritual but not Religious','Chinese Traditional','Buddhist','Tribal Religious','Sikh','Jewish','Baha\'i','Other'], f.object.religion), {}, {class: "form-control"} %>
+        </div>
+				<div class="form-group">
+					<%= f.label :country %><br />
+					<%= f.text_field :country, class: "form-control" %>
+        </div>
+				<div class="form-group">
+					<%= f.label :education %><br />
+					<%= f.select :education, options_for_select(['','Prefer not to disclose','Non-traditional schooling','Completed high school','Some college','Completed bachelor of arts','Some graduate education','Completed graduate education'], f.object.education), {}, {class: "form-control"} %>
+        </div>
+				<div class="form-group">
+					<%= f.label :family_income %><br />
+					<%= f.select :family_income, options_for_select(['','Prefer not to disclose','Below $25,000','$25,000-$45,000','$45,000-$65,000','$65,000-$85,000','$85,000-$105,000','Above $105,000'], f.object.family_income), {}, {class: "form-control"} %>
         </div>
         <%= f.submit t('.update', :default => "Update"), class: "btn btn-primary" %>
       <% end %>
